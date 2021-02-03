@@ -5,24 +5,39 @@
  */
 package Game_Of_War;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Tarun
  */
 public class Test {
     public static void main(String[] args) {
-        Card c = new Card("Hearts","Two");
-        System.out.println(c);
-        System.out.println(c.getSuit());
-        System.out.println(c.getRank());
-        System.out.println(c.getValue());
+        List<Card> list = new ArrayList();
+        Deck deck = new Deck();
+        deck.shuffle();
+        for(Card card : deck.getAllCards()){
+            System.out.println(card);
+        }
+        System.out.println("");
+        System.out.println(deck.getAllCards().size());
         
-        Card d = new Card("Spades","Four");
-        System.out.println(d);
-        System.out.println(d.getSuit());
-        System.out.println(d.getRank());
-        System.out.println(d.getValue());
+        Player p = new Player("Tarun");
+        System.out.println(p);
+        System.out.println(deck.getAllCards().size());
         
-        System.out.println("\n"+(d.getValue()>c.getValue()));
+        p.add_cards(deck.deal_one());
+        System.out.println(p);
+        System.out.println(deck.getAllCards().size());
+        
+        list.add(deck.deal_one());list.add(deck.deal_one());list.add(deck.deal_one());
+        p.add_cards(list);
+        System.out.println(p);
+        System.out.println(deck.getAllCards().size());
+        
+        for(int i=0;i<4;i++){
+            System.out.println(p.remove_one());
+        }
     }
 }
