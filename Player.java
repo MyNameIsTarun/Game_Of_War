@@ -40,6 +40,10 @@ public class Player {
         all_cards.add(card);
     }
     
+    public int size(){
+        return all_cards.size();
+    }
+    
     @Override
     public String toString(){
         return "Player "+name+" has "+all_cards.size()+" cards.";
